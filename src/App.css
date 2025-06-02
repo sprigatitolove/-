@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #fff;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.character-row {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+  gap: 4px;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+
+.character-button {
+  padding: 5px 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.main {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  background-color: #fbfbfb;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.viewer-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.viewer {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  margin: 20px auto;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.layer.hair-back { z-index: 1; }
+.layer.base { z-index: 2; }
+.layer.accessory-back { z-index: 3; }   /* 머리 뒤 악세사리 */
+.layer.inner { z-index: 4; }
+.layer.bottom { z-index: 5; }
+.layer.top { z-index: 6; }
+.layer.onepiece { z-index: 7; }
+.layer.set { z-index: 8; }
+.layer.outer { z-index: 9; }
+.layer.socks { z-index: 10; }
+.layer.shoes { z-index: 11; }
+.layer.hair-front { z-index: 12; }
+.layer.hat { z-index: 13; }
+.layer.accessory-front { z-index: 14; } /* 머리 앞 악세사리 */
+
+.option-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.option {
+  background-color: #eee;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
