@@ -73,9 +73,9 @@ body {
   width: 100%;
 }
 
-.layer.hair-back { z-index: 1; }
+.layer.hairBack { z-index: 1; }
 .layer.base { z-index: 2; }
-.layer.accessory-back { z-index: 3; }   /* 머리 뒤 악세사리 */
+.layer.accessoryback { z-index: 3; }   /* 머리 뒤 악세사리 */
 .layer.inner { z-index: 4; }
 .layer.bottom { z-index: 5; }
 .layer.top { z-index: 6; }
@@ -84,9 +84,9 @@ body {
 .layer.outer { z-index: 9; }
 .layer.socks { z-index: 10; }
 .layer.shoes { z-index: 11; }
-.layer.hair-front { z-index: 12; }
+.layer.hairFront { z-index: 12; }
 .layer.hat { z-index: 13; }
-.layer.accessory-front { z-index: 14; } /* 머리 앞 악세사리 */
+.layer.accessoryfront { z-index: 14; } /* 머리 앞 악세사리 */
 
 .option-panel {
   display: flex;
