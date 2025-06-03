@@ -16,8 +16,8 @@ const characters = [
       ],
       bottom: [ { label: '청바지', image: '/bonbon/bonbon_denimjean.png' } ],
       hair: [
-        { label: '세미 롱', front: '/bonbon/bonbonhair_semi_hair.png', back: '/bonbon/bonbonhair_semi_back.png' }
-      ],
+        { label: '세미 롱', front: '/bonbon/bonbonhair_semi_hair.png', back: '/bonbon/bonbonhair_semi_back.png' },
+        { label: '만두 머리', front: null, back: '/bonbon/bonbonhair_mandu_back.png' }, { label: '도넛 머리', front: null, back: '/bonbon/bonbonhair_donut_back.png' },],
       hat: [], 
       inner: [], 
       outer: [], 
