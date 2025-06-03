@@ -82,7 +82,7 @@ body {
 .layer.onepiece { z-index: 7; }
 .layer.set { z-index: 8; }
 .layer.outer { z-index: 9; }
-.layer.socks { z-index: 10; }
+.layer.socks { z-index: 4.5; }
 .layer.shoes { z-index: 11; }
 .layer.hairFront { z-index: 12; }
 .layer.hat { z-index: 13; }
