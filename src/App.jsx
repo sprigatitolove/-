@@ -22,7 +22,9 @@ const characters = [
       inner: [], 
       outer: [], 
       onepiece: [], 
-      shoes: [], 
+      shoes: [ { label: '딸기 슬리퍼', image: '/bonbon/bonbon_strawberryslipper.png' },
+
+      ], 
       socks: [], 
       accessory: []
     }
@@ -66,9 +68,19 @@ const characters = [
       set: [ { label: '교복', image: '/angel/angel_uniform.png' } ],
       top: [], bottom: [],
       hair: [
-        { label: '롱헤어', front: '/angel/angelhair_long_front.png', back: '/angel/angelhair_long_back.png' }
+        { label: '생머리', front: '/angel/angelhair_long_front.png', back: '/angel/angelhair_long_back.png' },
+        { label: '양갈래', front: null, back: '/angel/angelhair_twintail_back.png' },
+        { label: '묶은 머리', front: null, back: '/angel/angelhair_ponytail_back.png' },
+        { label: '넘긴 머리', front: '/angel/angelhair_clean_front.png', back: '/angel/angelhair_long_back.png' },
       ],
-      hat: [], inner: [], outer: [], onepiece: [], shoes: [], socks: [], accessory: []
+      hat: [], inner: [], 
+      outer: [
+        { label: '스포츠 자켓', image: '/angel/angel_sportjacket.png' },
+        { label: '니트 가디건', image: '/angel/angel_cardigan.png' },
+      ], 
+      onepiece: [{ label: '하얀 원피스', image: '/angel/angel_whitedress.png' },
+      ], 
+      shoes: [], socks: [], accessory: []
     }
   },
   {
@@ -131,26 +143,131 @@ const characters = [
       hat: [], inner: [], outer: [], onepiece: [], shoes: [], socks: [], accessory: [] }
   }
 ];
+characters.forEach(c => {
+  const firstHair = c.outfits.hair?.[0];
+  c.defaultHair = firstHair
+    ? { front: firstHair.front || null, back: firstHair.back || null }
+    : { front: null, back: null };
+});
 
 function App() {
   const [selectedCharacters, setSelectedCharacters] = useState([]);
   const [characterImages, setCharacterImages] = useState({});
   const [activeCategory, setActiveCategory] = useState('top');
+const setDefaultHair = (charId) => {
+  const char = characters.find(c => c.id === charId);
+  if (!char || !char.defaultHair) return;
+
+  setCharacterImages(prev => ({
+    ...prev,
+    [charId]: {
+      ...prev[charId],
+      hairFront: char.defaultHair.front,
+      hairBack: char.defaultHair.back
+    }
+  }));
+};
+  const randomizeCharacter = (charId, char) => {
+    const newSelection = {};
+    for (const category in char.outfits) {
+      if (['set', 'accessory', 'hat'].includes(category)) continue;
+      const options = char.outfits[category];
+      if (options.length === 0) continue;
+
+      if (category === 'hair') {
+        const hair = options[Math.floor(Math.random() * options.length)];
+        newSelection.hairFront = hair.front;
+        newSelection.hairBack = hair.back;
+      } else if (category === 'accessory') {
+        const count = Math.floor(Math.random() * 3); // 0~2개
+        newSelection.accessory = options.sort(() => 0.5 - Math.random()).slice(0, count).map(i => i.image || i);
+      } else {
+        const choice = options[Math.floor(Math.random() * options.length)];
+        newSelection[category] = choice.image || choice;
+      }
+    }
+
+    setCharacterImages(prev => ({
+      ...prev,
+      [charId]: newSelection
+    }));
+  };
+
+  const resetCharacter = (charId) => {
+    setCharacterImages(prev => ({
+      ...prev,
+      [charId]: {}
+    }));
+  };
+
+  const randomizeAllCharacters = () => {
+    const newImages = {};
+    selectedCharacters.forEach(charId => {
+      const char = characters.find(c => c.id === charId);
+      if (!char) return;
+
+      const selection = {};
+      for (const category in char.outfits) {
+        if (['set', 'accessory', 'hat'].includes(category)) continue;
+        const options = char.outfits[category];
+        if (options.length === 0) continue;
+
+        if (category === 'hair') {
+          const hair = options[Math.floor(Math.random() * options.length)];
+          selection.hairFront = hair.front;
+          selection.hairBack = hair.back;
+        } else if (category === 'accessory') {
+          const count = Math.floor(Math.random() * 3);
+          selection.accessory = options.sort(() => 0.5 - Math.random()).slice(0, count).map(i => i.image || i);
+        } else {
+          const choice = options[Math.floor(Math.random() * options.length)];
+          selection[category] = choice.image || choice;
+        }
+      }
+
+      newImages[charId] = selection;
+    });
+
+    setCharacterImages(newImages);
+  };
+
+  const resetAllCharacters = () => {
+    setCharacterImages({});
+  };
 
   const handleChange = (charId, category, image) => {
     setCharacterImages(prev => {
       const updated = { ...prev[charId] };
-      if (category === 'accessory') {
-        const acc = updated.accessory || [];
-        updated.accessory = acc.includes(image)
-          ? acc.filter(i => i !== image)
-          : [...acc, image];
-      } else if (category === 'hair') {
-        updated.hairFront = image.front;
-        updated.hairBack = image.back;
+
+      if (image === null) {
+        if (category === 'accessory') {
+          updated.accessory = [];
+        } else if (category === 'hair') {
+          updated.hairFront = null;
+          updated.hairBack = null;
+        } else {
+          updated[category] = null;
+        }
       } else {
-        updated[category] = image;
+        if (category === 'accessory') {
+          const acc = updated.accessory || [];
+          updated.accessory = acc.includes(image)
+            ? acc.filter(i => i !== image)
+            : [...acc, image];
+        } else if (category === 'hair') {
+          updated.hairFront = image.front;
+          updated.hairBack = image.back;
+        } else {
+          updated[category] = image;
+        }
+
+        if (category === 'set' && image) {
+          updated.top = null;
+          updated.bottom = null;
+          updated.onepiece = null;
+        }
       }
+
       return { ...prev, [charId]: updated };
     });
   };
@@ -163,8 +280,21 @@ function App() {
           ? [...prev, char.id]
           : prev
     );
-  };
 
+  // ✅ 캐릭터가 없을 때 추가되었는지 확인하고 헤어 설정
+  if (!selectedCharacters.includes(char.id) && selectedCharacters.length < 4) {
+    setCharacterImages(prevImages => ({
+      ...prevImages,
+      [char.id]: {
+        ...prevImages[char.id],
+        hairFront: char.defaultHair?.front || null,
+        hairBack: char.defaultHair?.back || null
+      }
+    }));
+  } // ← 여기까지가 if문!
+};
+  
+  
   return (
     <div className="app">
       <div className="character-row">
@@ -206,17 +336,32 @@ function App() {
                 {selected.hat && <img src={selected.hat} className="layer hat" alt="hat" />}
                 {selected.hairFront && <img src={selected.hairFront} className="layer hairFront" alt="hairFront" />}
               </div>
-              <div className="option-panel">
-                {Object.keys(char.outfits).includes(activeCategory) && char.outfits[activeCategory]?.map(item => (
-                  <div
-                    key={item.label}
-                    onClick={() => handleChange(charId, activeCategory, item.image || item)}
-                    className="option"
-                  >
-                    {item.label || item}
-                  </div>
-                ))}
-              </div>
+              
+ <div className="option-panel">
+  {/* 기존 옵션들 */}
+  {Object.keys(char.outfits).includes(activeCategory) &&
+    char.outfits[activeCategory]?.map(item => (
+      <div
+        key={item.label}
+        onClick={() => handleChange(charId, activeCategory, item.image || item)}
+        className="option"
+      >
+        {item.label || item}
+      </div>
+    ))}
+
+  {/* 벗기 버튼 - 별도 스타일 클래스 추가 */}
+  {Object.keys(char.outfits).includes(activeCategory) && (
+    <div
+      onClick={() => handleChange(charId, activeCategory, null)}
+      className="option strip-button"
+    >
+      X
+    </div>
+    
+  )}
+  
+</div>
             </div>
           );
         })}
@@ -225,9 +370,17 @@ function App() {
           {[ 'set', 'top', 'bottom', 'inner', 'outer', 'onepiece', 'socks', 'shoes', 'hair', 'hat', 'accessory' ].map(cat => (
             <button key={cat} onClick={() => setActiveCategory(cat)}>{cat}</button>
           ))}
+          
         </div>
       </div>
+
+      <div className="footer-buttons">
+        <button className="reset" onClick={resetAllCharacters}>RESET</button>
+        <button className="random" onClick={randomizeAllCharacters}>random</button>
+      </div>
+
     </div>
+    
   );
 }
 
