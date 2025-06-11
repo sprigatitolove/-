@@ -128,3 +128,15 @@ body {
   font-weight: bold;
   padding: 6px 12px;
 }
+
+.category-button.active {
+  background-color: #ececec; /* 활성 카테고리 버튼 배경색 */
+  color: rgb(0, 0, 0); /* 활성 카테고리 버튼 글자색 */
+  font-weight: bold;
+}
+
+.option.selected {
+  background-color: #858585; /* 선택된 옵션 배경색 */
+  color: rgb(255, 255, 255); /* 선택된 옵션 글자색 */
+  font-weight: bold;
+}

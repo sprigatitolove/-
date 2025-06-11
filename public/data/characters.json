@@ -1,0 +1,140 @@
+[
+  {
+    "id": "bonbon",
+    "name": "Bonbon",
+    "color": "#B33A32",
+    "textColor": "#fff",
+    "base": "/bonbon/bonbonbase.png",
+    "outfits": {
+      "set": [ { "label": "교복", "image": "/bonbon/bonbon_uniform.png" } ],
+      "top": [
+        { "label": "줄무늬 셔츠", "image": "/bonbon/bonbon_stripeshirts.png" },
+        { "label": "회색 후드집업", "image": "/bonbon/bonbon_grayhoodie.png" }
+      ],
+      "bottom": [ { "label": "청바지", "image": "/bonbon/bonbon_denimjean.png" } ],
+      "hair": [
+        { "label": "세미 롱", "front": "/bonbon/bonbonhair_semi_hair.png", "back": "/bonbon/bonbonhair_semi_back.png" },
+        { "label": "만두 머리", "front": null, "back": "/bonbon/bonbonhair_mandu_back.png" },
+        { "label": "도넛 머리", "front": null, "back": "/bonbon/bonbonhair_donut_back.png" }
+      ],
+      "hat": [],
+      "inner": [],
+      "outer": [],
+      "dress": [],
+      "shoes": [ { "label": "딸기 슬리퍼", "image": "/bonbon/bonbon_strawberryslipper.png" } ],
+      "socks": [],
+      "accessory": []
+    }
+  },
+  {
+    "id": "sugar",
+    "name": "Sugar",
+    "color": "#DCEEFF",
+    "textColor": "#000",
+    "base": "/sugar/sugarbase.png",
+    "outfits": {
+      "set": [ { "label": "교복", "image": "/sugar/sugar_uniform.png" } ],
+      "top": [], "bottom": [],
+      "hair": [
+        { "label": "부스스한 머리", "front": "/sugar/sugarhair_long_front.png", "back": "/sugar/sugarhair_long_back.png" },
+        { "label": "곰돌이 트윈테일", "front": null, "back": "/sugar/sugarhair_teddybeartwintail.png" }
+      ],
+      "hat": [
+        { "label": "곰돌이 모자", "image": "/sugar/sugar_bearhat.png" }
+      ], "inner": [], "outer": [], "dress": [], "shoes": [], "socks": [], "accessory": []
+    }
+  },
+  {
+    "id": "honey",
+    "name": "Honey",
+    "color": "#FFFACD",
+    "textColor": "#000",
+    "base": "/honey/honeybase.png",
+    "outfits": {
+      "set": [ { "label": "교복", "image": "/honey/honey_uniform.png" } ],
+      "top": [], "bottom": [], "hair": [], "hat": [], "inner": [], "outer": [], "dress": [], "shoes": [], "socks": [], "accessory": []
+    }
+  },
+  {
+    "id": "angel",
+    "name": "Angel",
+    "color": "#ffffff",
+    "textColor": "#777",
+    "base": "/angel/angelbase.png",
+    "outfits": {
+      "set": [ { "label": "교복", "image": "/angel/angel_uniform.png" } ],
+      "top": [], "bottom": [],
+      "hair": [
+        { "label": "생머리", "front": "/angel/angelhair_long_front.png", "back": "/angel/angelhair_long_back.png" },
+        { "label": "양갈래", "front": null, "back": "/angel/angelhair_twintail_back.png" },
+        { "label": "묶은 머리", "front": null, "back": "/angel/angelhair_ponytail_back.png" },
+        { "label": "넘긴 머리", "front": "/angel/angelhair_clean_front.png", "back": "/angel/angelhair_long_back.png" }
+      ],
+      "hat": [], "inner": [],
+      "outer": [
+        { "label": "스포츠 자켓", "image": "/angel/angel_sportjacket.png" },
+        { "label": "니트 가디건", "image": "/angel/angel_cardigan.png" }
+      ],
+      "dress": [{ "label": "하얀 원피스", "image": "/angel/angel_whitedress.png" }],
+      "shoes": [], "socks": [], "accessory": []
+    }
+  },
+  {
+    "id": "jelly",
+    "name": "Jelly",
+    "color": "#4B0082",
+    "textColor": "#fff",
+    "base": "/jelly/jellybase.png",
+    "outfits": {
+      "set": [{ "label": "교복", "image": "/jelly/jelly_uniform.png" }],
+      "top": [],
+      "bottom": [],
+      "hair": [ { "label": "쇼트컷", "front": "/jelly/jellyhair_short_front.png", "back": "/jelly/jellyhair_short_back.png" } ],
+      "hat": [],
+      "inner": [],
+      "outer": [], "dress": [], "shoes": [], "socks": [], "accessory": []
+    }
+  },
+  {
+    "id": "valentine",
+    "name": "Valentine",
+    "color": "#000000",
+    "textColor": "#fff",
+    "base": "/valentine/valentinebase.png",
+    "outfits": {
+      "set": [ { "label": "교복", "image": "/valentine/valentine_uniform.png" } ],
+      "top": [],
+      "bottom": [],
+      "hair": [{
+        "label": "캐주얼 롱헤어",
+        "front": "/valentine/valentinehair_casual_front.png",
+        "back": "/valentine/valentinehair_casual_back.png"
+      }],
+      "hat": [],
+      "inner": [], 
+      "outer": [], 
+      "dress": [], 
+      "shoes": [], 
+      "socks": [], 
+      "accessory": []
+    }
+  },
+  {
+    "id": "cherry",
+    "name": "Cherry",
+    "color": "#fff0f5",
+    "textColor": "#f4a8b8",
+    "base": "/cherry/cherrybase.png",
+    "outfits": {
+      "set": [ { "label": "교복", "image": "/cherry/cherry_uniform.png" } ],
+      "top": [],
+      "bottom": [],
+      "hair": [ {
+        "label": "클래식 컬",
+        "front": "/cherry/cherryhair_classic_front.png",
+        "back": "/cherry/cherryhair_classic_back.png"
+      } ],
+      "hat": [], "inner": [], "outer": [], "dress": [], "shoes": [], "socks": [], "accessory": []
+    }
+  }
+]
